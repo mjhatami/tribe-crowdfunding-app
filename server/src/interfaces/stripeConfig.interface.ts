@@ -1,8 +1,8 @@
 export interface StripeConfig {
-  name: string,
+  tag: string,
   secretKey: string;
   publishKey: string;
   webhookKey: string;
   status: string;
-  default: boolean;
+  isDefault: boolean;
 }

@@ -1,0 +1,39 @@
+version: '3.9'
+services:
+  builder:
+    build:
+      context: .
+      target: Builder
+    ports:
+      - 8080
+    depends_on:
+      - mongodb
+    networks:
+      - tribe
+    restart: unless-stopped
+  runner:
+    build:
+      context: .
+      target: Runner
+    ports:
+      - 8080
+    depends_on:
+      - mongodb
+    networks:
+      - tribe
+    restart: unless-stopped
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27014:27017
+    networks:
+      - tribe
+    volumes:
+      - db:/data/db
+    restart: unless-stopped
+
+volumes:
+  db:
+networks:
+  tribe:
+    driver: bridge

@@ -5,10 +5,11 @@ WORKDIR /tribe/app
 COPY package.json yarn.lock ./
 COPY client/package.json ./client/package.json
 COPY server/package.json ./server/package.json
-RUN yarn install --frozen-lockfile
+# RUN yarn install --frozen-lockfile
+RUN npm install
 
 COPY . .
-RUN yarn build
+RUN npm run build
 
 FROM node:17.4.0-alpine AS Runner
 WORKDIR /tribe/app
@@ -27,4 +28,4 @@ COPY --from=Builder /tribe/app/client/build /tribe/app/server/dist/public
 COPY --from=Builder /tribe/app/package.json /tribe/app
 
 EXPOSE 3000
-CMD ["yarn", "start"]
+CMD ["npm", "start"]

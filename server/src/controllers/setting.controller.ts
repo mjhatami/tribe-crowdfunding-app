@@ -5,7 +5,7 @@ class SettingController {
     let existingStripeConfigs;
     try {
       existingStripeConfigs = await stripeConfigModel.find({},{
-        name:1,
+        tag:1,
         _id:1,
         status:1,
         isDefault:1,
@@ -28,7 +28,7 @@ class SettingController {
 
   public createStripeConfig = async (req: Request, res: Response, next: NextFunction) => {
     const {
-      name,
+      tag,
       secretKey,
       publishKey,
       webhookKey,
@@ -46,9 +46,9 @@ class SettingController {
     } catch (error) {
       return next(error);
     }
-
-    const newStripeConfig = await stripeConfigModel.create({
-      name,
+    console.log(existingStripeConfig);
+    const newStripeConfig = new stripeConfigModel({
+      tag,
       secretKey,
       publishKey,
       webhookKey,
