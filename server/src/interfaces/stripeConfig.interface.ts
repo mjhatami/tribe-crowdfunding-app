@@ -1,5 +1,5 @@
 export interface StripeConfig {
-  tag: string,
+  tag: string;
   secretKey: string;
   publishKey: string;
   webhookKey: string;

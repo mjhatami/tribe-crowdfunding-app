@@ -4,21 +4,43 @@ import stripeAccountModel from '@models/stripeAccount.model';
 import userModel from '@/models/users.model';
 import { DefaultDeserializer } from 'v8';
 import {HttpException} from '@exceptions/HttpException';
+import { isEmpty } from '@/utils/util';
+/**
+ * Interfaces
+ */
+import { StripeAccount } from '@interfaces/stripeAccount.interface';
+import { StripeConfig } from '@interfaces/stripeConfig.interface';
+
+ 
 class StripeController {
 
+  /**
+   * ! Must be removed in production.
+   * @param req 
+   * @param res 
+   * @param next 
+   * @returns 
+   */
+  
   public stripeConfigFixture = async (req: Request, res: Response, next: NextFunction)=>{
-    let existingStripeConfig
+    let existingStripeConfig;
     
     try {
       existingStripeConfig = await stripeConfigModel.findOne({isDefault:true});
     } catch (error) {
       return next(error);
     }
-    if(existingStripeConfig) return next();
+    if(!isEmpty(existingStripeConfig)) return res.send({
+      status: 'ok',
+      data: {
+        stripeConfigs: existingStripeConfig
+      },
+      message: 'Existing stripe config is loaded.'
+    })
 
     
     const createdConfig = new stripeConfigModel({
-      tag: 'derfault',
+      tag: 'default',
       secretKey:process.env.STRIPE_SECRET_KEY,
       publishKey:process.env.STRIPE_PUBLISH_KEY,
       webhookKey:process.env.STRIPE_WEBHOOK_KEY,
@@ -29,32 +51,35 @@ class StripeController {
       await createdConfig.save();
     } catch (error) {
       return next(error);
-
     }
 
     res.send({
       status: 'ok',
       data: {
-        stripeConfigs: 'sadf'
+        stripeConfigs: createdConfig
       },
-      message: 'Existing stripe configs is loaded.'
+      message: 'Stripe config created.'
     })
 
   }
   
-  
+  /**
+   * Available for all members of a community in account setting.
+   * @param req 
+   * @param res 
+   * @param next 
+   */
   public onboarding = async (req: Request, res: Response, next: NextFunction) => {
 
-    
     const {
-      userId,
       tag,
       description
   
     } = req.body;
+    const userId = req.user.id;
 
-    if(!userId)next(new HttpException(400,'User id is required.'));
-    if(!tag)next(new HttpException(400,'Tag is required.'));
+    // if(!userId) next(new HttpException(400,'User id is required.'));
+    if(isEmpty(tag))return next(new HttpException(400,'Tag is required.'));
     /**
      * TODO: Retrieve user from qraph-ql
      * TODO: Add collection and space conditions
@@ -65,53 +90,76 @@ class StripeController {
     /**
      * Check status of app configuration and setup stripe client.
      */
-    let existingStripeConfig:any ;
+    let existingStripeConfig:null | StripeConfig ;
     try {
       existingStripeConfig = await stripeConfigModel.findOne({isDefault:true});
     } catch (error) {
-      next(new HttpException(500, 'Sorry! An internal server error occurred please try again.'));
+      return next(new HttpException(500, 'Sorry! An internal server error occurred please try again.'));
     }
-    if(!existingStripeConfig)next(new HttpException(503, 'Admin installation is not completed for this app.'));
-    let stripe;
+    if(isEmpty(existingStripeConfig))return next(new HttpException(503, 'Admin installation is not completed for this app.'));
+    /**
+     * TODO: set the type from stripe sdk.
+     */
+    let stripe:any;
     try {
       stripe = await require("stripe")(existingStripeConfig.secretKey);
-
     } catch (error) {
       /**
        * TODO: check if this error is for invalid secret key
        * TODO: its status must changed to deactivated and set some message to the community admin
        */
-      next(new HttpException(503, 'Sorry we can not able to onboard any account.'));
+      return next(new HttpException(503, 'Sorry we can not able to onboard any account.'));
     }
-    
+
+    console.log(userId)
     /**
      * Check if onboarded account exist for this user or not;
      */
-    let existingAcc: any;
+    let user:any;
     try {
-      existingAcc = await stripeAccountModel.findOne({
-        tag, 
-        userId
-      });
+      user = await userModel.findOne({tribeId:userId}).populate('stripeAccount');
     } catch (error) {
-      next(new HttpException(500, 'Sorry! An internal server error occurred please try again.'));
+      return next(new HttpException(500, 'Internal server error.'));
     }
+    console.log(user)
+    
+    // let existingAcc:any;
+    // try {
+    //   existingAcc = await stripeAccountModel.findOne({
+    //     tag, 
+    //     userId
+    //   });
+    // } catch (error) {
+    //   next(new HttpException(500, 'Sorry! An internal server error occurred please try again.'));
+    // }
 
-    let account_link
-    let stripeAcc;
-    let message;
-    if(existingAcc){
+    let existingAcc;
+    if(isEmpty(user)){
+      user = new userModel({
+        tribeId: userId,
+        networkId:req.user.networkId,
+        networkDomain:req.user.networkDomain
+      })
+    }
+    if(!isEmpty(user.stripeAccount)){
+      existingAcc = user.stripeAccount[0]
+    }
+    console.log(!isEmpty(user.stripeAccount));
+    console.log(user.stripeAccount);
+    console.log('e',existingAcc);
 
+    let account_link:string;
+    let stripeAcc:any;
+    let message: string = 'unknown message';
+    if(!isEmpty(existingAcc)){
       try {
         existingAcc.account = await stripe.accounts.retrieve(existingAcc.account.id);
       } catch (error) {
-        next(new HttpException(500, 'Sorry we can not able to retrieve your account.'));
+        return next(new HttpException(500, 'Sorry we can not able to retrieve your account.'));
       }
-
       
       if (existingAcc.account.details_submitted){
         existingAcc.status = 'onboarding-completed'
-
       }else{
         account_link = await this.generateAccountLink(existingAcc.account.id,stripe);
         existingAcc.status = 'onboarding-incomplete'
@@ -120,8 +168,7 @@ class StripeController {
       try {
         await existingAcc.save();
       } catch (error) {
-        next(new HttpException(500, 'Sorry! An internal server error occurred please try again.'));
-
+        return next(new HttpException(500, 'Sorry! An internal server error occurred please try again.'));
       }
       stripeAcc = existingAcc
       message = 'Your account is retrieved.'
@@ -135,25 +182,28 @@ class StripeController {
         newStripeAccount = await stripe.accounts.create({type: "express"});
         
       } catch (error) {
-        next(new HttpException(500, 'Sorry! we can not create any other account. Please try again later.'));
+        console.log('sdf',error)
+        return next(new HttpException(500, 'Sorry! we can not create any other account. Please try again later.'));
       }
 
       const createdStripeAccount = new stripeAccountModel({
         tag,
         description,
-        userId,
+        user: user.id,
         account: newStripeAccount,
         isDefault:true
       });
+      user.stripeAccount.push(createdStripeAccount)
 
       try {
         account_link = await this.generateAccountLink(newStripeAccount.id,stripe);
         createdStripeAccount.status = 'onboarding-created'
         await createdStripeAccount.save();
+        await user.save()
 
       } catch (error) {
         console.log('error',error)
-        next(new HttpException(500, 'Sorry! we can not generate oboarding link for your account. Please try again.'));
+        return next(new HttpException(500, 'Sorry! we can not generate oboarding link for your account. Please try again.'));
       }
 
       stripeAcc=createdStripeAccount;
@@ -176,8 +226,14 @@ class StripeController {
       },
       message
     });
-    next();
   };
+
+  public createIntent = async (req: Request, res: Response, next: NextFunction) => {
+    
+    // const {amount},{amount:number} = req.body;
+
+
+  }
 
   /**
    * 

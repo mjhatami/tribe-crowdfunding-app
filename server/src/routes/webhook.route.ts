@@ -11,8 +11,7 @@ class IndexRoute implements Routes {
   constructor() {
     this.initializeRoutes();
   }
-
-  private initializeRoutes() {
+  private initializeRoutes()  {
     this.router.post(`${this.path}`, signatureMiddleware, this.webhookController.index);
   }
 }

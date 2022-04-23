@@ -1,16 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import stripeConfigModel from '@models/stripeConfig.model'
 class SettingController {
+  
   public getStripeConfigs = async (req: Request, res: Response, next: NextFunction) => {
     let existingStripeConfigs;
     try {
-      existingStripeConfigs = await stripeConfigModel.find({},{
-        tag:1,
-        _id:1,
-        status:1,
-        isDefault:1,
-        createdAt:1
-      });
+      existingStripeConfigs = await stripeConfigModel.find();
     } catch (error) {
       next(error);
     }
@@ -20,11 +15,12 @@ class SettingController {
       data: {
         stripeConfigs: existingStripeConfigs
       },
-      message: 'Existing stripe configs is loaded.'
+      message: 'stripe configs loaded.'
     })
 
-
   };
+
+
 
   public createStripeConfig = async (req: Request, res: Response, next: NextFunction) => {
     const {

@@ -2,7 +2,7 @@ export interface CommunityFeeConfig {
   feeName: string;
   currency: string;
   community: {
-    static: number,
+    static: number;
     percentage: number
   };
   status: string;

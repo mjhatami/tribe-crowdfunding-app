@@ -12,6 +12,9 @@ class settingRoute implements Routes {
   }
 
   private initializeRoutes() {
+    /**
+     * ! An authorization middleware must be developed for these routes
+     */
     this.router.get(`${this.path}`, this.settingController.getStripeConfigs);
     this.router.post(`${this.path}`, this.settingController.createStripeConfig);
   }

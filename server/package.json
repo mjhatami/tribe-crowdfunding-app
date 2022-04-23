@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev nodemon",
+    "dev": "cross-env NODE_ENV=dev nodemon --debug",
     "build": "tsc && tsc-alias",
     "test": "jest --forceExit --detectOpenHandles",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/",
@@ -28,9 +28,9 @@
     "express-tsx-views": "^1.4.6",
     "helmet": "^4.6.0",
     "hpp": "^0.2.3",
-    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.1",
     "morgan": "^1.10.0",
+    "shortid": "^2.2.16",
     "stripe": "^8.217.0",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5"
@@ -48,7 +48,7 @@
     "@types/helmet": "^4.0.0",
     "@types/hpp": "^0.2.1",
     "@types/jest": "^26.0.24",
-    "@types/jsonwebtoken": "^8.5.4",
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/mongoose": "^5.10.1",
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.11.27",

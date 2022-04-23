@@ -1,11 +1,12 @@
 /**
  * @method isEmpty
- * @param {String | Number | Object} value
+ * @param {String | Number | Object || undefined} value
  * @returns {Boolean} true & false
  * @description this value is Empty Check
  */
 export const isEmpty = (value: string | number | object): boolean => {
-  if (value === null) {
+  
+  if (value === null || value == 'undefined') {
     return true;
   } else if (typeof value !== 'number' && value === '') {
     return true;
