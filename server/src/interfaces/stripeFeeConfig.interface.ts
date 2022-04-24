@@ -1,7 +1,10 @@
 export interface StripeFeeConfig {
   feeName: string;
   currency: string;
-  webhookKey: string;
+  stripe: {
+    fixed:number,
+    percentage:number,
+  };
   status: string;
-  default: boolean;
+  isDefault: boolean;
 }

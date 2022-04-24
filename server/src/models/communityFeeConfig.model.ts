@@ -1,6 +1,9 @@
 import { model, Schema, Document } from 'mongoose';
 import { CommunityFeeConfig } from '@interfaces/communityFeeConfig.interface';
 
+/**
+ * TODO: In the future it likes a morph and must be able to attache to other entities
+ */
 const communityConfigSchema: Schema = new Schema({
   feeName: {type: String, required: true},
   currency: {type: String, required: true},

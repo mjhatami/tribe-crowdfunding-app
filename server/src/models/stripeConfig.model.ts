@@ -6,6 +6,7 @@ const stripeConfigSchema: Schema = new Schema({
   secretKey: {type: String, required: true},
   publishKey: {type: String, required: true},
   webhookKey: {type: String, required: true},
+  stripeFeeConfig:{type: Schema.Types.ObjectId, ref:'StripeFeeConfig'},
   status: {type: String, required: true, default:'active'},
   isDefault: {type: Boolean, required: true, default:false},
 

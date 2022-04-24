@@ -2,6 +2,7 @@ import { NextFunction, Request, response, Response } from 'express';
 import stripeConfigModel from '@models/stripeConfig.model';
 import stripeAccountModel from '@models/stripeAccount.model';
 import userModel from '@/models/users.model';
+import intentModel from '@/models/intent.model';
 import { DefaultDeserializer } from 'v8';
 import {HttpException} from '@exceptions/HttpException';
 import { isEmpty } from '@/utils/util';
@@ -10,6 +11,7 @@ import { isEmpty } from '@/utils/util';
  */
 import { StripeAccount } from '@interfaces/stripeAccount.interface';
 import { StripeConfig } from '@interfaces/stripeConfig.interface';
+import donationBoxModel from '@/models/donationBox.model';
 
  
 class StripeController {
@@ -90,7 +92,7 @@ class StripeController {
     /**
      * Check status of app configuration and setup stripe client.
      */
-    let existingStripeConfig:null | StripeConfig ;
+    let existingStripeConfig:any ;
     try {
       existingStripeConfig = await stripeConfigModel.findOne({isDefault:true});
     } catch (error) {
@@ -191,6 +193,7 @@ class StripeController {
         description,
         user: user.id,
         account: newStripeAccount,
+        stripeConfig: existingStripeConfig.id ,
         isDefault:true
       });
       user.stripeAccount.push(createdStripeAccount)
@@ -230,7 +233,104 @@ class StripeController {
 
   public createIntent = async (req: Request, res: Response, next: NextFunction) => {
     
-    // const {amount},{amount:number} = req.body;
+    const {amount} = req.body;
+    const {donationCode} = req.params
+
+    if(isEmpty(amount))return next(new HttpException(400,'amount is required.'));
+
+    let existingDonationBox;
+    try {
+      existingDonationBox = await donationBoxModel.findOne({donationCode}).populate({
+        path:'stripeAccount',
+        populate:{
+          path:'stripeConfig',
+          populate:{
+            path:'stripeFeeConfig'
+          }
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      return next(new HttpException(404,'The donation box not found..'));
+    }
+    if(isEmpty(existingDonationBox)) return next(new HttpException(404,'The donation box not found..'));
+
+
+    let stripe:any;
+    try {
+      stripe = await require("stripe")(existingDonationBox.stripeAccount.stripeConfig.secretKey);
+    } catch (error) {
+      /**
+       * TODO: check if this error is for invalid secret key
+       * TODO: its status must changed to deactivated and set some message to the community admin
+       */
+      return next(new HttpException(503, 'Sorry we can not able to pay now, please try again later.'));
+    }
+
+    /**
+     * TODO: Intent fee calculation must be in a private function 
+     */
+
+    const stripeFixedFee = existingDonationBox.stripeAccount.stripeConfig.stripeFeeConfig.stripe.fixed
+    const stripPercentageFee = existingDonationBox.stripeAccount.stripeConfig.stripeFeeConfig.stripe.percentage
+
+    const applicationFee = Math.ceil(((amount * stripPercentageFee) / 100 + stripeFixedFee) * 100)
+
+
+
+    let stripeIntent;
+    try {
+      stripeIntent = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: 'CAD',
+        setup_future_usage: 'off_session',
+        // payment_method_types: ['card'],
+        automatic_payment_methods: {
+          enabled: true,
+        },
+        payment_method_options: {
+          card:{
+            request_three_d_secure : 'any'
+          }
+        },
+        application_fee_amount: applicationFee,
+        transfer_data: {
+          destination: existingDonationBox.stripeAccount.account.id,
+        },
+        metadata:{
+          from:'tribe-crowdfunding-app',
+          donationBoxId: existingDonationBox.id
+        }
+      });
+    } catch (error) {
+      return next(new HttpException(503, 'Sorry we can not able to pay now, please try again later.'));
+    }
+
+    console.log(stripeIntent);
+
+    const createdIntent = new intentModel({
+      intent:stripeIntent,
+      donationBox: existingDonationBox.id
+    });
+
+    try {
+      await createdIntent.save()
+    } catch (error) {
+      return next(new HttpException(500, 'Internal server error.'));
+    }
+    
+
+   
+    res.send({
+      status:'ok',
+      data:{
+         config: {
+           publishKey: existingDonationBox.stripeAccount.stripeConfig.publishKey
+         },
+         clientSecret: createdIntent.intent.client_secret
+      },
+      message: 'Intent created.'
+    });
 
 
   }
@@ -270,6 +370,11 @@ class StripeController {
   return accountLinks
 
   }
+
+
+  
+
+
 }
 
 export default StripeController;

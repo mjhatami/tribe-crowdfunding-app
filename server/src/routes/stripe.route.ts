@@ -15,6 +15,8 @@ class stripeRoute implements Routes {
   private initializeRoutes() {
     //! This route must be removed in production 
     this.router.post(`${this.path}/fixture`, this.stripeController.stripeConfigFixture);
+
+    this.router.post(`${this.path}/intent/:donationCode`, this.stripeController.createIntent);
     this.router.use(auth);
     this.router.post(`${this.path}/onboarding`, this.stripeController.onboarding);
     // this.router.post(`${this.path}/setting`, this.stripeController.createStripeConfig);

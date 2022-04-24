@@ -8,7 +8,7 @@ const donationBoxSchema: Schema = new Schema({
   numberOfPayment: {type: String, required: true, default:0},
   donationCode: {type:String, required:true},
   earn: {type: Number, required: true, default: 0},
-  stripeAccount:{type: Schema.Types.ObjectId, ref:'StipeAccount'},
+  stripeAccount:{type: Schema.Types.ObjectId, ref:'StripeAccount'},
   user:{type: Schema.Types.ObjectId, ref:'User'}
 
 },{
