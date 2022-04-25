@@ -28,4 +28,4 @@ COPY --from=Builder /tribe/app/client/build /tribe/app/server/dist/public
 COPY --from=Builder /tribe/app/package.json /tribe/app
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "run","dev"]

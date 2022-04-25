@@ -4,8 +4,10 @@ services:
     build:
       context: .
       target: Builder
+    volumes:
+      - server_node_modules:./server/node_modules
     ports:
-      - 8080
+      - 3000:3000
     depends_on:
       - mongodb
     networks:
@@ -15,8 +17,10 @@ services:
     build:
       context: .
       target: Runner
+    volumes:
+      - client_node_modules:./client/node_modules
     ports:
-      - 8080
+      - 8080:8080
     depends_on:
       - mongodb
     networks:
@@ -33,6 +37,8 @@ services:
     restart: unless-stopped
 
 volumes:
+  client_node_modules:
+  server_node_modules:
   db:
 networks:
   tribe:
