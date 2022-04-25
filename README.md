@@ -33,20 +33,20 @@
 - [Acknowledgments](#acknowledgments)
 
 ## 🧐 Problem Statement <a name = "problem_statement"></a>
-There is some cost of management for every community, so collecting and reporting in a transparent way is a traditional issue and there is a right for every person who pays, to get a transparent report in particular for charities. Furthermore, I saw Stripe integration in the Tribe roadmap on notion documents that needs product design and I think this can help this process.
+There is some cost of management for every community, so collecting and reporting in a transparent way is a traditional issue and also there is a right for every person who pays, to get a transparent report in particular for charities. Furthermore, I saw Stripe integration in the Tribe roadmap on notion documents that needs product design and I think this can help this process.
 - Collect money from members of a community and manage that in a transparent way.
-- A dashboard for analyzing and reporting where money come and goes.
-- Charities are a good target that increase the Tribe experience on how communities growth.
+- A dashboard for financial analyzing and reporting where the money comes and goes.
+- Charities are a good target that increases the Tribe experience on how communities grow.
 
 
 
 ## 💡 Idea / Solution <a name = "idea"></a>
- Donation Box is an element in the post section. It manges how much money need for specific propose, which account achieved it and how much spend for the transaction fees and  .
- - Integrate with stripe connect
- - the Donation Box which helps you define a goal an then collect money for that.
+the Donation Box is an element in the post section. It manages how much money need for a specific purpose, which accounts achieved it, and how much spend on the transaction fees.
+ - with the Stripe connect integration.
+ - the Donation Box helps you define a goal and then collect money for that in a simple way.
 
 ## ⛓️ Dependencies / Limitations <a name = "limitations"></a>
-This project is not production ready can need some development. I list some problem with .
+This project is not production-ready and needs more development. I list some problems below :
 - What are the dependencies of your project?
 - Describe each limitation in detailed but concise terms
 - Explain why each limitation exists

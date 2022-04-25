@@ -1,0 +1,806 @@
+{
+	"info": {
+		"_postman_id": "d97502dc-4f82-4468-885c-4c7dc1e98510",
+		"name": "Tribe | Crowdfounding App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create stripe config",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tag\":\"majid\",\n    \"secretKey\":\"sk_test_51KsdfafasdfasdfasdfasdfsdfsdafsdhlHwgtN54NMvlDERPuOhrAaXdZHmJzMBgyyNsWYTWgGifb2d00I1ID8zN5\",\n    \"publishKey\":\"pk_test_51KpCQAKuD8XZWV9PCcWUioMgE92OYpCNW09fuklCPPD5dWqTpbi6KrasdfdfasdfJnIluO5YUZaz440cE4n007COqoItS\",\n    \"webhookKey\":\"whsec_2nkNmUDuwE1Ru1sdfasdfaEo2r4JEYFGyfzI\",\n    \"isDefault\":false,\n    \"feeConfig\":{\n        \"fixed\":30,\n        \"percentage\": 2.9\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/setting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"setting"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "latest",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tag\":\"majid\",\n    \"secretKey\":\"sk_test_51KpCQAKuD8XZWV9PYgGHGg97dq9HaaeIL1fatiZ3hlHwgtN54NMvlDERPuOhrAaXdZHmJzMBgyyNsWYTWgGifb2d00I1ID8zN5\",\n    \"publishKey\":\"pk_test_51KpCQAKuD8XZWV9PCcWUioMgE92OYpCNW09fuklCPPD5dWqTpbi6Kr2DO3Mn0K6FgWpxeJnIluO5YUZaz440cE4n007COqoItS\",\n    \"webhookKey\":\"whsec_2nkNmUDuwE1Ru1kO8XEo2r4JEYFGyfzI\",\n    \"isDefault\":false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/setting",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"setting"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "575"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"23f-vQBN5VYbsbxSiPHADc/jCdLitiI\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Apr 2022 18:25:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"stripeConfig\": {\n            \"status\": \"active\",\n            \"isDefault\": true,\n            \"_id\": \"625c5bb1fd89d36632323aef\",\n            \"tag\": \"majid\",\n            \"secretKey\": \"sk_test_51KpCQAKusdgdsfgL1fatiZ3hlHwgtN54NMvlDERPuOhrAasdgfgGifb2d00I1ID8zN5\",\n            \"publishKey\": \"pk_test_51KpsgdfsgfdgE92OYpCNW09fuklCPPD5dgfsdfgs0K6FgWpxeJnIluO5YUZaz440cE4n007COqoItS\",\n            \"webhookKey\": \"whsec_2nkNmUsdgffgsdfgsdgfsfdgs8XEo2r4JEYFGyfzI\",\n            \"createdAt\": \"2022-04-17T18:25:53.632Z\",\n            \"updatedAt\": \"2022-04-17T18:25:53.632Z\",\n            \"__v\": 0,\n            \"id\": \"625c5bb1fd89d36632323aef\"\n        }\n    },\n    \"message\": \"New stripe host added.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "get stripe configs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/setting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"setting"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get stripe configs",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/setting",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"setting"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "590"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24e-eanqHPuLWl2OTDxvAR0+3bgehho\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 23 Apr 2022 18:51:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"stripeConfigs\": [\n            {\n                \"status\": \"active\",\n                \"isDefault\": true,\n                \"_id\": \"62644a9bf3a953bb2c4208eb\",\n                \"tag\": \"majid\",\n                \"secretKey\": \"sk_test_51KpCQAKuD8XZWV9PYgGHGg97dq9HaaeIL1fatiZ3hlHwgtN54NMvlDERPuOhrAaXdZHmJzMBgyyNsWYTWgGifb2d00I1ID8zN5\",\n                \"publishKey\": \"pk_test_51KpCQAKuD8XZWV9PCcWUioMgE92OYpCNW09fuklCPPD5dWqTpbi6Kr2DO3Mn0K6FgWpxeJnIluO5YUZaz440cE4n007COqoItS\",\n                \"webhookKey\": \"whsec_2nkNmUDuwE1Ru1kO8XEo2r4JEYFGyfzI\",\n                \"createdAt\": \"2022-04-23T18:51:07.403Z\",\n                \"updatedAt\": \"2022-04-23T18:51:07.403Z\",\n                \"__v\": 0,\n                \"id\": \"62644a9bf3a953bb2c4208eb\"\n            }\n        ]\n    },\n    \"message\": \"Existing stripe configs is loaded.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "onboarding",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tag\":\"default\",\n    \"description\":\"for all posts\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/stripe/onboarding?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stripe",
+						"onboarding"
+					],
+					"query": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "onboarding",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tag\":\"default\",\n    \"description\":\"for all posts\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/stripe/onboarding?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stripe",
+								"onboarding"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "235"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"eb-gGb2uS6R9+mVjuLqLxJfVhS5/Ro\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 25 Apr 2022 19:29:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"status\": \"onboarding-created\",\n        \"account_link\": \"https://connect.stripe.com/express/onboarding/qHe90rgkHl44\",\n        \"details_submitted\": false,\n        \"charges_enabled\": false\n    },\n    \"message\": \"Please continue your onboarding in stripe.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "setting",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " \n {\n     \"tag\":\"default\",\n     \"secretKey\":\"sk_test_51KpCQAKuD8XZWV9PYgGHGg97dq9HaaeIL1fatiZ3hlHwgtN54NMvlDERPuOhrAaXdZHmJzMBgyyNsWYTWgGifb2d00I1ID8zN5\",\n     \"publishKey\":\"pk_test_51KpCQAKuD8XZWV9PCcWUioMgE92OYpCNW09fuklCPPD5dWqTpbi6Kr2DO3Mn0K6FgWpxeJnIluO5YUZaz440cE4n007COqoItS\",\n     \"webhookKey\":\"whsec_2nkNmUDuwE1Ru1kO8XEo2r4JEYFGyfzI\"\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/setting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"setting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create donation box !!!",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"coffie machineeee\",\n    \"description\":\"We planned to buy a coffe machine for the office please help to have more fun time in it.\",\n    \"amount\":100000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/donation-box?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"donation-box"
+					],
+					"query": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create donation box !!!",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"coffie machineeee\",\n    \"description\":\"We planned to buy a coffe machine for the office please help to have more fun time in it.\",\n    \"amount\":100000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/donation-box?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"donation-box"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "514"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"202-Fzdp22B8Svoo15zrABQIsY+BbrM\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 24 Apr 2022 19:50:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"donationBox\": {\n            \"numberOfPayment\": \"0\",\n            \"earn\": 0,\n            \"_id\": \"6265a9f58b83c2e8132eb846\",\n            \"title\": \"coffie machineeee\",\n            \"description\": \"We planned to buy a coffe machine for the office please help to have more fun time in it.\",\n            \"amount\": 100000,\n            \"donationCode\": \"xXxDAlnNV\",\n            \"user\": \"6265a8be8b83c2e8132eb833\",\n            \"stripeAccount\": \"6265a8c28b83c2e8132eb834\",\n            \"createdAt\": \"2022-04-24T19:50:13.535Z\",\n            \"updatedAt\": \"2022-04-24T19:50:13.535Z\",\n            \"__v\": 0,\n            \"id\": \"6265a9f58b83c2e8132eb846\"\n        }\n    },\n    \"message\": \"Your donation box created\"\n}"
+				}
+			]
+		},
+		{
+			"name": "create intent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n     \"amount\": 10000\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/stripe/intent/AuuDuJ1PK?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0&id=l0seGtWfD4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"stripe",
+						"intent",
+						"AuuDuJ1PK"
+					],
+					"query": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0"
+						},
+						{
+							"key": "id",
+							"value": "l0seGtWfD4"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create intent",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n     \"amount\": 10000\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/stripe/intent/xXxDAlnNV",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"stripe",
+								"intent",
+								"xXxDAlnNV"
+							],
+							"query": [
+								{
+									"key": "accessToken",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFudDh5dHZxSVEiLCJuZXR3b3JrSWQiOiJCWU4yQkJvQTZ4IiwibmV0d29ya0RvbWFpbiI6Im1qaGF0YW1pLnRyaWJlcGxhdGZvcm0uY29tIiwidG9rZW5UeXBlIjoiVVNFUiIsImVudGl0eUlkIjpudWxsLCJwZXJtaXNzaW9uQ29udGV4dCI6bnVsbCwicGVybWlzc2lvbnMiOm51bGwsInNlc3Npb25JZCI6IlYyY3BsM1AzR2M5ak1HSWRXb2RxdlFETU5qZktaY2VvazdHT01zaXk1Yk1ySURvZDl5IiwiaWF0IjoxNjUwNjM0MzE0LCJleHAiOjE2NTMyMjYzMTR9.qXxKhzS92MwukKZv9BfZ-Nm-un5UQpl4wHL9AQLHzR0",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "l0seGtWfD4",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "264"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"108-/enetL1S8B8SNsns37ZIcVyEi4g\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 24 Apr 2022 20:11:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"data\": {\n        \"config\": {\n            \"publishKey\": \"pk_test_51KpCQAKuD8XZWV9PCcWUdsfsdfdWqTpbi6Kr2DO3Mn0K6FgWpsdfsfsfduO5YUZaz440cE4n007COqoItS\"\n        },\n        \"clientSecret\": \"pi_3KsBmfKuD8sdfsf9P14MoNVVh_secresdfssdfOmAtTyB7ahZvRHR\"\n    },\n    \"message\": \"Intent created.\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:3000",
+			"type": "default"
+		}
+	]
+}
