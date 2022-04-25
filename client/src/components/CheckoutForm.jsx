@@ -14,32 +14,6 @@ export default function CheckoutForm(props) {
   const stripe = useStripe();
   const elements = useElements();
 
-  // useEffect(() => {
-
-  //   // console.log(props)
-  //   // setClientSecret(props.clientSecret);
-  //   // setAmount(props.setAmount);
-  //   // setCurrency(props.currency);
-  //   // Step 1: Fetch product details such as amount and currency from
-  //   // API to make sure it can't be tampered with in the client.
-  //   // api.getProductDetails().then(productDetails => {
-  //   //   setAmount(productDetails.amount / 100);
-  //   //   setCurrency(productDetails.currency);
-  //   // });
-
-  //   // // Step 2: Create PaymentIntent over Stripe API
-  //   // api
-  //   //   .createPaymentIntent({
-  //   //     payment_method_types: ["card"]
-  //   //   })
-  //   //   .then(clientSecret => {
-  //   //     setClientSecret(clientSecret);
-  //   //   })
-  //   //   .catch(err => {
-  //   //     setError(err.message);
-  //   //   });
-  // }, []);
-
   const handleSubmit = async ev => {
     ev.preventDefault();
     setProcessing(true);

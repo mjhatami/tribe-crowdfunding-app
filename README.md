@@ -55,11 +55,11 @@ This project is not production-ready and needs more development. I list some pro
 appropriate, describe how these limitations could point to the need for further research.
 
 ## 🚀 Future Scope <a name = "future_scope"></a>
-- Multi currency must be checked and developed.
+- Multi-currency must be checked and developed.
 - Statistics dashboard for members and admins.
 - Webhook to write a comment to thank the payers and mention them.
 - Mongoose transaction must be added.
-- User information must attached to the intents.
+- User information must be attached to the intents.
 - Enable mongoose concurrency optimization.
 Write about what you could not develop during the course of the Hackathon; and about what your project can achieve 
 in the future.
@@ -114,26 +114,29 @@ until finished
 ```
 
 ## 🎈 Usage <a name="usage"></a>
-Firstly, the admins must create stripe account with activated connect.
+Firstly, the admins must create a stripe account with activated connect.
 - Admins:
     - Create a stripe account with activated connect.
-    - Create webhook on Tribe specific url.
+    - Create a webhook on Tribe specific URL.
     - Set "client_secret", publish_key", "webhook_key" on tribe-crowdfunding-app.
     - Define fees by any condition their like.
 - Members:
     - Go to profile and onboard on admin's stripe account.
-    - Now, donation-box feature is available for them. Define amount of money that they need and write a description about what they want to do.
+    - Now, the donation-box feature is available for them. Define the amount of money that they need and write a description of what they want to do.
 
-After these steps, others can choose what proportion of total money does they like to pay depends on  community policy and after that a payment gateway ready for them.
+After these steps, others can choose what proportion of total money they like to pay depending on community policy and after that a payment gateway is ready for them.
 
-- Available endpoints (post man doc is provided):
+- Available endpoints (postman doc is provided):
   - Post create admin stripe config
   - Get existing admin stripe configs
-  - Get retrieve or create onboarding account for members
+  - Get retrieve or create an onboarding account for members
   - Post create donation-box
   - Post create stripe intent by donation code
 
-In client side of the app you can create intent and pay and the process is completed (Stripe webhook must be implemented to achieve intents status).
+On the client-side of the app, you can create intent and pay and the process is completed (Stripe webhook must be implemented to achieve intents status).
+
+These instructions will get you a copy of the project up and running on your local machine for development 
+and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
 ## ⛏️ Built With <a name = "tech_stack"></a>
 - [MongoDB](https://www.mongodb.com/) - Database
