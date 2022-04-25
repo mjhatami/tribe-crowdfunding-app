@@ -6,10 +6,10 @@ COPY package.json yarn.lock ./
 COPY client/package.json ./client/package.json
 COPY server/package.json ./server/package.json
 # RUN yarn install --frozen-lockfile
-RUN npm install
+RUN npm install --force
 
 COPY . .
-RUN npm run build
+RUN npm run dev
 
 FROM node:17.4.0-alpine AS Runner
 WORKDIR /tribe/app

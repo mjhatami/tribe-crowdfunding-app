@@ -17,8 +17,7 @@ class stripeRoute implements Routes {
     this.router.post(`${this.path}/fixture`, this.stripeController.stripeConfigFixture);
 
     this.router.post(`${this.path}/intent/:donationCode`, this.stripeController.createIntent);
-    this.router.use(auth);
-    this.router.post(`${this.path}/onboarding`, this.stripeController.onboarding);
+    this.router.route(`${this.path}/onboarding`).post(auth,this.stripeController.onboarding);
     // this.router.post(`${this.path}/setting`, this.stripeController.createStripeConfig);
     // this.router.get(`${this.path}/fixture`, this.stripeController.stripeConfigFixture);
   }

@@ -16,9 +16,9 @@ class donationBoxRoute implements Routes {
   private initializeRoutes() {
     this.router.get(`${this.path}/:donationCode`, this.donationBoxController.getDonationBoxByCode);
 
-    this.router.use(auth);
-    this.router.post(`${this.path}/`, this.donationBoxController.createDonationBox);
-    // this.router.route(`${this.path}/:donationCode`).put(auth, this.donationBoxController.getDonationBoxByCode);
+    // this.router.use(auth);
+    // this.router.post(`${this.path}/`, this.donationBoxController.createDonationBox);
+    this.router.route(`${this.path}/`).post(auth, this.donationBoxController.createDonationBox);
   }
 }
 

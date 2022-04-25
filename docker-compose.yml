@@ -1,6 +1,6 @@
 version: '3.9'
 services:
-  builder:
+  server:
     build:
       context: .
       target: Builder
@@ -11,7 +11,7 @@ services:
     networks:
       - tribe
     restart: unless-stopped
-  runner:
+  client:
     build:
       context: .
       target: Runner

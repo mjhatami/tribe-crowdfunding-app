@@ -93,9 +93,15 @@ class DonationBoxController {
    */
   public getDonationBoxByCode = async (req: Request, res: Response, next: NextFunction)=>{
     
-    const {donationCode} = req.params
-    console.log(req.params, req.query)
-    console.log('cccc', req.user)
+    const {donationCode} = req.params;
+
+    let existingDonationBox;
+    try {
+      existingDonationBox = await donationBoxModel.findOne({donationCode})
+    } catch (error) {
+      return next(new HttpException(500, 'Donation Box not found.'));
+    }
+  
 
     // const tribeClient = new TribeClient({
     //   graphqlUrl: process.env.GRAPHQL_URL,

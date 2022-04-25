@@ -12,7 +12,8 @@ const app = new App([
     new HealthRoute(),
     new Setting(),
     new stripeRoute(),
-    new donationBoxRoute()
+    new donationBoxRoute(),
+
 ]);
 console.log('TTTTTTTTTTTTTTTTTTt')
 app.listen();

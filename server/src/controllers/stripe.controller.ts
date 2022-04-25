@@ -327,7 +327,9 @@ class StripeController {
          config: {
            publishKey: existingDonationBox.stripeAccount.stripeConfig.publishKey
          },
-         clientSecret: createdIntent.intent.client_secret
+         clientSecret: createdIntent.intent.client_secret,
+         currency: createdIntent.intent.currency
+
       },
       message: 'Intent created.'
     });
