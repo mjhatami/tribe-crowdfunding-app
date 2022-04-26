@@ -103,15 +103,6 @@ class DonationBoxController {
     }
   
 
-    // const tribeClient = new TribeClient({
-    //   graphqlUrl: process.env.GRAPHQL_URL,
-    //   clientId: process.env.CLIENT_ID,
-    //   clientSecret: process.env.CLIENT_SECRET,
-    //   onError:err =>{
-    //     console.log(err)
-    //   }
-
-    // })
 
     const t = new TribeClient({
       graphqlUrl: process.env.GRAPHQL_URL,
