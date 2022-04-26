@@ -26,7 +26,7 @@
 - [Dependencies / Limitations](#limitations)
 - [Future Scope](#future_scope)
 - [Setting up a local environment](#getting_started)
-- [Usage](#usage)
+- [How it works?](#usage)
 - [Technology Stack](#tech_stack)
 - [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
