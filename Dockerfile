@@ -9,7 +9,7 @@ COPY server/package.json ./server/package.json
 RUN npm install --force
 
 COPY . .
-RUN npm run dev
+CMD npm run dev
 
 FROM node:17.4.0-alpine AS Runner
 WORKDIR /tribe/app
@@ -28,4 +28,4 @@ COPY --from=Builder /tribe/app/client/build /tribe/app/server/dist/public
 COPY --from=Builder /tribe/app/package.json /tribe/app
 
 EXPOSE 3000
-CMD ["npm", "run","dev"]
+CMD ["npm", "run"]
